@@ -3,6 +3,8 @@ package com.automationexercise.models;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.automationexercise.utils.Constants;
+
 public class UserData {
 
     private String name;
@@ -76,23 +78,23 @@ public class UserData {
 
     public Map<String, String> toFormData() {
         Map<String, String> formData = new HashMap<>();
-        formData.put("name", name);
-        formData.put("email", email);
-        formData.put("password", password);
-        formData.put("title", title);
-        formData.put("birth_date", birthDate);
-        formData.put("birth_month", birthMonth);
-        formData.put("birth_year", birthYear);
-        formData.put("firstname", firstname);
-        formData.put("lastname", lastname);
-        formData.put("company", company);
-        formData.put("address1", address1);
-        formData.put("address2", address2);
-        formData.put("country", country);
-        formData.put("zipcode", zipcode);
-        formData.put("state", state);
-        formData.put("city", city);
-        formData.put("mobile_number", phoneNumber);
+        formData.put(Constants.FormFields.NAME, name);
+        formData.put(Constants.FormFields.EMAIL, email);
+        formData.put(Constants.FormFields.PASSWORD, password);
+        formData.put(Constants.FormFields.TITLE, title);
+        formData.put(Constants.FormFields.BIRTH_DATE, birthDate);
+        formData.put(Constants.FormFields.BIRTH_MONTH, birthMonth);
+        formData.put(Constants.FormFields.BIRTH_YEAR, birthYear);
+        formData.put(Constants.FormFields.FIRSTNAME, firstname);
+        formData.put(Constants.FormFields.LASTNAME, lastname);
+        formData.put(Constants.FormFields.COMPANY, company);
+        formData.put(Constants.FormFields.ADDRESS1, address1);
+        formData.put(Constants.FormFields.ADDRESS2, address2);
+        formData.put(Constants.FormFields.COUNTRY, country);
+        formData.put(Constants.FormFields.ZIPCODE, zipcode);
+        formData.put(Constants.FormFields.STATE, state);
+        formData.put(Constants.FormFields.CITY, city);
+        formData.put(Constants.FormFields.MOBILE_NUMBER, phoneNumber);
         return formData;
     }
 }

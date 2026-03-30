@@ -1,6 +1,7 @@
 package com.automationexercise.tasks;
 
 import com.automationexercise.models.UserData;
+import com.automationexercise.utils.Constants;
 
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
@@ -24,12 +25,12 @@ public class UpdateAccount implements Task {
     @Step("{0} actualiza los datos de la cuenta")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Put.to("/updateAccount")
-                        .with(request -> {
-                            request.contentType("multipart/form-data");
-                            userData.toFormData().forEach((k, v) -> request.multiPart(k, v));
-                            return request;
-                        })
+            Put.to(Constants.Endpoints.UPDATE_ACCOUNT)
+                .with(request -> {
+                    request.contentType("multipart/form-data");
+                    userData.toFormData().forEach((k, v) -> request.multiPart(k, v));
+                    return request;
+                })
         );
     }
 }

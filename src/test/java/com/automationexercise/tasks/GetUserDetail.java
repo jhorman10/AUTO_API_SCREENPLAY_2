@@ -1,5 +1,7 @@
 package com.automationexercise.tasks;
 
+import com.automationexercise.utils.Constants;
+
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -22,8 +24,8 @@ public class GetUserDetail implements Task {
     @Step("{0} consulta los detalles de la cuenta por email")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Get.resource("/getUserDetailByEmail")
-                        .with(request -> request.queryParam("email", email))
+            Get.resource(Constants.Endpoints.GET_USER_DETAIL_BY_EMAIL)
+                .with(request -> request.queryParam(Constants.FormFields.EMAIL, email))
         );
     }
 }

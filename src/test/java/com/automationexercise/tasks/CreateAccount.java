@@ -1,6 +1,7 @@
 package com.automationexercise.tasks;
 
 import com.automationexercise.models.UserData;
+import com.automationexercise.utils.Constants;
 
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
@@ -24,12 +25,12 @@ public class CreateAccount implements Task {
     @Step("{0} crea una cuenta de usuario")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Post.to("/createAccount")
-                        .with(request -> {
-                            request.contentType("multipart/form-data");
-                            userData.toFormData().forEach((k, v) -> request.multiPart(k, v));
-                            return request;
-                        })
+            Post.to(Constants.Endpoints.CREATE_ACCOUNT)
+                .with(request -> {
+                    request.contentType("multipart/form-data");
+                    userData.toFormData().forEach((k, v) -> request.multiPart(k, v));
+                    return request;
+                })
         );
     }
 }

@@ -1,5 +1,7 @@
 package com.automationexercise.tasks;
 
+import com.automationexercise.utils.Constants;
+
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -24,13 +26,13 @@ public class DeleteAccount implements Task {
     @Step("{0} elimina la cuenta de usuario")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Delete.from("/deleteAccount")
-                        .with(request -> {
-                            request.contentType("multipart/form-data");
-                            request.multiPart("email", email);
-                            request.multiPart("password", password);
-                            return request;
-                        })
+            Delete.from(Constants.Endpoints.DELETE_ACCOUNT)
+                .with(request -> {
+                    request.contentType("multipart/form-data");
+                    request.multiPart(Constants.FormFields.EMAIL, email);
+                    request.multiPart(Constants.FormFields.PASSWORD, password);
+                    return request;
+                })
         );
     }
 }
