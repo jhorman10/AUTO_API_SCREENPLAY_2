@@ -1,0 +1,33 @@
+@api-crud
+Feature: Ciclo CRUD de cuenta de usuario via API
+  Como automatizador quiero validar el ciclo completo de vida de una cuenta
+  de usuario usando los endpoints REST de AutomationExercise para verificar
+  la integridad de los servicios de creacion, consulta, actualizacion y eliminacion.
+
+  @api-post
+  Scenario: Crear una nueva cuenta de usuario
+    Given el usuario prepara los datos de registro con un email unico
+    When el usuario envia la solicitud de creacion de cuenta
+    Then el codigo de respuesta es 201
+    And el mensaje de respuesta es "User created!"
+
+  @api-get
+  Scenario: Consultar los detalles de la cuenta creada
+    Given existe una cuenta de usuario registrada
+    When el usuario consulta los detalles de la cuenta por email
+    Then el codigo de respuesta es 200
+    And los detalles contienen el email registrado
+
+  @api-put
+  Scenario: Actualizar los datos de la cuenta
+    Given existe una cuenta de usuario registrada
+    When el usuario actualiza el nombre de la cuenta
+    Then el codigo de respuesta es 200
+    And el mensaje de respuesta es "User updated!"
+
+  @api-delete
+  Scenario: Eliminar la cuenta de usuario
+    Given existe una cuenta de usuario registrada
+    When el usuario envia la solicitud de eliminacion de cuenta
+    Then el codigo de respuesta es 200
+    And el mensaje de respuesta es "Account deleted!"

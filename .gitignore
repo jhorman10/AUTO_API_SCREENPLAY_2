@@ -1,0 +1,75 @@
+# .gitignore for AUTO_API_SCREENPLAY
+# Java / Gradle / IDE ignores
+
+########################################
+# OS files
+########################################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+########################################
+# IDEs
+########################################
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+########################################
+# Gradle
+########################################
+.gradle/
+build/
+out/
+
+# Keep Gradle wrapper artifacts tracked
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+########################################
+# Serenity / Test / Report outputs
+########################################
+target/
+target/site/
+build/reports/
+build/test-results/
+build/serenity/
+reports/
+coverage/
+jacoco.exec
+
+########################################
+# Logs and runtime files
+########################################
+*.log
+*.tmp
+*.pid
+
+########################################
+# IDE and editor files
+########################################
+.project
+.classpath
+.settings/
+*.swp
+*~
+
+########################################
+# Environment / local configuration
+########################################
+local.properties
+env.properties
+.env
+
+########################################
+# Misc
+########################################
+# Distribution packages
+*.jar
+*.war
+*.ear
+*.zip
+
+# (removed WireMock ignores)
