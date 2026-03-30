@@ -76,6 +76,9 @@ git push -u origin main
   - Cambios documentados en `README.md` o `docs/` si es necesario.
   - No se introducen mocks permanentes en `main`.
 
+- Si se modifican claves o valores en `src/test/java/com/automationexercise/utils/Constants.java`,
+  actualiza `README.md` y `docs/` y ejecuta la suite antes de abrir el PR.
+
 ## Publicar reportes
 
 - Los reportes de Serenity se generan en `target/site/serenity`. Adjuntar o publicar estos artefactos en el CI si se desea revisión visual.

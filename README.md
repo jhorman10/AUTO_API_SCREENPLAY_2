@@ -15,6 +15,16 @@ Este repositorio resuelve el **punto 3** del reto de nivelación para automatiza
 | BDD Runner | Cucumber |
 | Reportes | Serenity HTML Reports |
 
+## Constantes centralizadas
+
+- Los literales clave (endpoints, campos de formulario, mensajes esperados y códigos HTTP)
+  están centralizados en [src/test/java/com/automationexercise/utils/Constants.java](src/test/java/com/automationexercise/utils/Constants.java).
+- En los archivos `.feature` preferimos usar **claves** para mensajes y códigos de estado en lugar de literales:
+  - Mensajes: por ejemplo `"USER_CREATED"`, `"USER_UPDATED"`, `"ACCOUNT_DELETED"`.
+  - Códigos HTTP: por ejemplo `"STATUS_CREATED"` (201) y `"STATUS_OK"` (200).
+- Los StepDefinitions soportan ambas formas: el paso puede recibir un `{int}` (número) o un `{string}` (clave),
+  que se resuelve internamente vía `Constants.Status.forKey(...)` y `Constants.Messages.forKey(...)`.
+
 ## Endpoints probados
 
 | Verbo | Endpoint | API # | Descripción |
@@ -127,29 +137,29 @@ Feature: Ciclo CRUD de cuenta de usuario via API
   Scenario: Crear una nueva cuenta de usuario
     Given el usuario prepara los datos de registro con un email unico
     When el usuario envia la solicitud de creacion de cuenta
-    Then la respuesta tiene codigo 200
-    And el mensaje de respuesta contiene "User created!"
+    Then el codigo de respuesta es "STATUS_CREATED"
+    And el mensaje de respuesta es "USER_CREATED"
 
   @api-get
   Scenario: Consultar los detalles de la cuenta creada
     Given existe una cuenta de usuario registrada
     When el usuario consulta los detalles de la cuenta por email
-    Then la respuesta tiene codigo 200
+    Then el codigo de respuesta es "STATUS_OK"
     And los detalles contienen el email registrado
 
   @api-put
   Scenario: Actualizar los datos de la cuenta
     Given existe una cuenta de usuario registrada
     When el usuario actualiza el nombre de la cuenta
-    Then la respuesta tiene codigo 200
-    And el mensaje de respuesta contiene "User updated!"
+    Then el codigo de respuesta es "STATUS_OK"
+    And el mensaje de respuesta es "USER_UPDATED"
 
   @api-delete
   Scenario: Eliminar la cuenta de usuario
     Given existe una cuenta de usuario registrada
     When el usuario envia la solicitud de eliminacion de cuenta
-    Then la respuesta tiene codigo 200
-    And el mensaje de respuesta contiene "Account deleted!"
+    Then el codigo de respuesta es "STATUS_OK"
+    And el mensaje de respuesta es "ACCOUNT_DELETED"
 ```
 
 ## Criterios de evaluación cubiertos

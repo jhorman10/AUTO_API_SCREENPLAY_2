@@ -20,6 +20,10 @@ Proveer criterios y convenciones para escribir, organizar, ejecutar y mantener p
 - Nomenclatura: `CreateAccount`, `GetUserDetail`, `UpdateAccount`, `DeleteAccount` (PascalCase para clases, camelCase para métodos).
 - Código de pruebas: cada `Task` una responsabilidad; `Question` para comprobaciones; `Model` para datos.
 - No usar comentarios inline en código de producción (la spec del proyecto lo exige).
+ - Centralizar literales: rutas, nombres de campos, mensajes esperados y códigos HTTP deben residir en
+	 `utils/Constants` y usarse desde `Tasks`, `Questions` y `Steps`. En las features se prefieren **claves**
+	 (ej: `"USER_CREATED"`, `"STATUS_OK"`) que se resuelven mediante `Constants.Messages.forKey(...)`
+	 y `Constants.Status.forKey(...)`.
 
 ## Gherkin y diseño de escenarios
 
@@ -106,6 +110,8 @@ python3 -m http.server --directory target/site/serenity 8000
 
 - Centralizar endpoints en `utils/Constants` o propiedad en `serenity.conf`.
 - Si cambian endpoints: actualizar la constante, ejecutar la suite completa y documentar el cambio en `docs/`.
+ - Además de endpoints, centralizar también los códigos de respuesta y mensajes en `utils/Constants`.
+	 Si cambian claves o textos esperados, actualiza `README.md` y `docs/BEST_PRACTICES_TESTS.md`.
 
 ## Troubleshooting rápido
 
