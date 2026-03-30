@@ -10,6 +10,7 @@ import com.automationexercise.tasks.CreateAccount;
 import com.automationexercise.tasks.DeleteAccount;
 import com.automationexercise.tasks.GetUserDetail;
 import com.automationexercise.tasks.UpdateAccount;
+import com.automationexercise.utils.Constants;
 import com.automationexercise.utils.TestDataGenerator;
 
 import io.cucumber.java.After;
@@ -94,7 +95,8 @@ public class ApiCrudStepDefinitions {
 
     @And("el mensaje de respuesta es {string}")
     public void verifyResponseMessage(String expectedMessage) {
-        actor.should(seeThat(ResponseMessage.value(), equalTo(expectedMessage)));
+        String expected = Constants.Messages.forKey(expectedMessage);
+        actor.should(seeThat(ResponseMessage.value(), equalTo(expected)));
     }
 
     @And("los detalles contienen el email registrado")

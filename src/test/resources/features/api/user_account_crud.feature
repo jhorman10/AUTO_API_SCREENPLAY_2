@@ -9,7 +9,7 @@ Feature: Ciclo CRUD de cuenta de usuario via API
     Given el usuario prepara los datos de registro con un email unico
     When el usuario envia la solicitud de creacion de cuenta
     Then el codigo de respuesta es 201
-    And el mensaje de respuesta es "User created!"
+    And el mensaje de respuesta es "USER_CREATED"
 
   @api-get
   Scenario: Consultar los detalles de la cuenta creada
@@ -23,11 +23,11 @@ Feature: Ciclo CRUD de cuenta de usuario via API
     Given existe una cuenta de usuario registrada
     When el usuario actualiza el nombre de la cuenta
     Then el codigo de respuesta es 200
-    And el mensaje de respuesta es "User updated!"
+    And el mensaje de respuesta es "USER_UPDATED"
 
   @api-delete
   Scenario: Eliminar la cuenta de usuario
     Given existe una cuenta de usuario registrada
     When el usuario envia la solicitud de eliminacion de cuenta
     Then el codigo de respuesta es 200
-    And el mensaje de respuesta es "Account deleted!"
+    And el mensaje de respuesta es "ACCOUNT_DELETED"

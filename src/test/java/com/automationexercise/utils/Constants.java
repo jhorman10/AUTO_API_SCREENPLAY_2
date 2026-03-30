@@ -35,5 +35,19 @@ public final class Constants {
         public static final String USER_CREATED = "User created!";
         public static final String USER_UPDATED = "User updated!";
         public static final String ACCOUNT_DELETED = "Account deleted!";
+
+        public static String forKey(String keyOrLiteral) {
+            if (keyOrLiteral == null) return null;
+            switch (keyOrLiteral) {
+                case "USER_CREATED":
+                    return USER_CREATED;
+                case "USER_UPDATED":
+                    return USER_UPDATED;
+                case "ACCOUNT_DELETED":
+                    return ACCOUNT_DELETED;
+                default:
+                    return keyOrLiteral;
+            }
+        }
     }
 }
