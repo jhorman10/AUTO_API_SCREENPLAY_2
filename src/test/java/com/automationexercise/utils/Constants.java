@@ -50,4 +50,40 @@ public final class Constants {
             }
         }
     }
+
+    public static final class Status {
+        public static final Integer OK = 200;
+        public static final Integer CREATED = 201;
+        public static final Integer BAD_REQUEST = 400;
+        public static final Integer UNAUTHORIZED = 401;
+        public static final Integer FORBIDDEN = 403;
+        public static final Integer NOT_FOUND = 404;
+        public static final Integer INTERNAL_SERVER_ERROR = 500;
+
+        public static Integer forKey(String keyOrLiteral) {
+            if (keyOrLiteral == null) return null;
+            switch (keyOrLiteral) {
+                case "STATUS_CREATED":
+                    return CREATED;
+                case "STATUS_OK":
+                    return OK;
+                case "STATUS_BAD_REQUEST":
+                    return BAD_REQUEST;
+                case "STATUS_UNAUTHORIZED":
+                    return UNAUTHORIZED;
+                case "STATUS_FORBIDDEN":
+                    return FORBIDDEN;
+                case "STATUS_NOT_FOUND":
+                    return NOT_FOUND;
+                case "STATUS_INTERNAL_SERVER_ERROR":
+                    return INTERNAL_SERVER_ERROR;
+                default:
+                    try {
+                        return Integer.parseInt(keyOrLiteral);
+                    } catch (NumberFormatException e) {
+                        return null;
+                    }
+            }
+        }
+    }
 }

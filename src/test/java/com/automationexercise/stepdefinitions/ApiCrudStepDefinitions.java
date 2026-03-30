@@ -93,6 +93,19 @@ public class ApiCrudStepDefinitions {
         actor.should(seeThat(ResponseCode.value(), equalTo(expectedCode)));
     }
 
+    @Then("el codigo de respuesta es {string}")
+    public void verifyResponseCode(String expectedCodeKey) {
+        try {
+            Response resp = LastResponse.received().answeredBy(actor);
+            System.out.println("[DEBUG] LastResponse HTTP status=" + resp.getStatusCode());
+            System.out.println("[DEBUG] LastResponse body=" + resp.asString());
+        } catch (Exception ignored) {
+        }
+
+        Integer expected = Constants.Status.forKey(expectedCodeKey);
+        actor.should(seeThat(ResponseCode.value(), equalTo(expected)));
+    }
+
     @And("el mensaje de respuesta es {string}")
     public void verifyResponseMessage(String expectedMessage) {
         String expected = Constants.Messages.forKey(expectedMessage);
